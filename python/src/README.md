@@ -17,7 +17,6 @@ uv run mcp
 
 当出现下图时代表安装成功
 
-![](../../../img/uv_install_success.png)
 
 通过`uv`安装`python`，最低版本要求为3.11
 
