@@ -1,16 +1,21 @@
-# chatppt-mcp
-基于chatppt进行的AI PPT生成服务，可以满足基于主题或者要求、以及上传文档进行生成ppt，支持在线编辑与下载。
+# ChatPPT-MCP
+ChatPPT​​ is an AI-powered presentation generation service that allows users to:
+- Generate PPTs ​​based on themes or requirements​​.
+- Upload documents​​ (e.g., Word, PDF) for automatic PPT creation.
+- Edit online​​ and ​​download​​ the final output.
 
-目前已经逐步开放ChatPPT-Server 对应的STDIO模式，即将也会开放对应的SSE协议。
+We are gradually rolling out the ​​ChatPPT-Server​​ in ​​STDIO mode​​, with ​​SSE (Server-Sent Events) protocol support​​ coming soon.
 
-参考视频可以查看：
+Check out these demo videos below to see it in action!
 
-[【示例1-点击查看】ChatPPT+初体验](https://yoo-web-public.cdn.bcebos.com/chatppt%2Fimport_example%2F%E3%80%90case%20video%E3%80%91chatppt-mcp%20server.mp4)
+[【Case 01】ChatPPT+demo](https://yoo-web-public.cdn.bcebos.com/chatppt%2Fimport_example%2F%E3%80%90case%20video%E3%80%91chatppt-mcp%20server.mp4)
 
-[【示例2-点击查看】ChatPPT+weather](https://yoo-web-public.cdn.bcebos.com/chatppt%2Fimport_example%2F%E3%80%90case%20video%E3%80%91chatppt-openweather.mp4)
+[【Case 02】ChatPPT+weather](https://yoo-web-public.cdn.bcebos.com/chatppt%2Fimport_example%2F%E3%80%90case%20video%E3%80%91chatppt-openweather.mp4)
 
-[【示例3-点击查看】ChatPPT+arxiv](https://yoo-web-public.cdn.bcebos.com/chatppt%2Fimport_example%2F%E3%80%90case%20video%E3%80%91chatppt-arxiv.mp4)
+[【Case 03】ChatPPT+arxiv](https://yoo-web-public.cdn.bcebos.com/chatppt%2Fimport_example%2F%E3%80%90case%20video%E3%80%91chatppt-arxiv.mp4)
 
-[【示例4-点击查看】ChatPPT+baidu](https://yoo-web-public.cdn.bcebos.com/chatppt%2Fimport_example%2F%E3%80%90case%20video%E3%80%91chatppt-baidu%20search.mp4)
+[【Case 04】ChatPPT+baidu](https://yoo-web-public.cdn.bcebos.com/chatppt%2Fimport_example%2F%E3%80%90case%20video%E3%80%91chatppt-baidu%20search.mp4)
 
-[【示例5-点击查看】ChatPPT+map](https://yoo-web-public.cdn.bcebos.com/chatppt%2Fimport_example%2F%E3%80%90case%20video%E3%80%91chatppt-gaode%20maps%20of%20plan.mp4)
+[【Case 05】ChatPPT+map](https://yoo-web-public.cdn.bcebos.com/chatppt%2Fimport_example%2F%E3%80%90case%20video%E3%80%91chatppt-gaode%20maps%20of%20plan.mp4)
+
+For any additional usage inquiries or requirements, please feel free to contact us at [http://www.yoo-ai.com](http://www.yoo-ai.com])
