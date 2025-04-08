@@ -59,15 +59,17 @@ uv run --with mcp\[cli\] mcp run {YOUR_PATH}/mcp_server/ppt.py
       "args": [
         "run",
         "--with",
-        "mcp_server[cli]",
-        "mcp_server",
+        "mcp[cli]",
+        "mcp",
         "run",
         "{YOUR_PATH}/mcp_server/ppt.py"
       ],
       "env": {
-        "API_KEY": "<YOUR_API_KEY>"
+        "API_KEY": "<YOUR_YOO_API_KEY>"
       }
     }
   }
 }
 ```
+对应的API Key需要到[www.yoo-ai.com](https://www.yoo-ai.com)进行生成。
+参考教程为：[教程链接](https://j2md2qa3ym.feishu.cn/docx/LRDrdv6PyoF472xMr7DcJSAUnye?from=from_copylink)
