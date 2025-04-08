@@ -12,7 +12,7 @@ uv add "mcp[cli]"
 
 验证mcp依赖是否安装成功，执行如下命令
 ```bash
-uv run mcp_server
+uv run mcp
 ```
 
 当出现下图时代表安装成功
@@ -31,15 +31,15 @@ uv python install 3.11
 通过`uv`创建一个项目
 
 ```bash
-uv init mcp_server_chatppt
+uv init mcp_server
 ```
 
 将`chatppt.py`拷贝到该目录下，通过如下命令测试mcp server是否正常运行
 
 ```bash
-uv run --with mcp_server[cli] mcp_server run {YOUR_PATH}/mcp_server_chatppt/ppt.py
+uv run --with mcp[cli] mcp run {YOUR_PATH}/mcp_server/ppt.py
 # 如果是mac，需要加转义符
-uv run --with mcp_server\[cli\] mcp_server run {YOUR_PATH}/mcp_server_chatppt/ppt.py
+uv run --with mcp\[cli\] mcp run {YOUR_PATH}/mcp_server/ppt.py
 ```
 
 如果没有报错则MCP Server启动成功
@@ -48,7 +48,6 @@ uv run --with mcp_server\[cli\] mcp_server run {YOUR_PATH}/mcp_server_chatppt/pp
 
 打开`Cursor`配置，在MCP中添加MCP Server
 
-![](../../../img/cursor_setting.png)
 
 在文件中添加如下内容后保存
 
@@ -63,7 +62,7 @@ uv run --with mcp_server\[cli\] mcp_server run {YOUR_PATH}/mcp_server_chatppt/pp
         "mcp_server[cli]",
         "mcp_server",
         "run",
-        "{YOUR_PATH}/mcp_server_baidu_maps/ppt.py"
+        "{YOUR_PATH}/mcp_server/ppt.py"
       ],
       "env": {
         "API_KEY": "<YOUR_API_KEY>"
