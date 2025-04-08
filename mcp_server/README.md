@@ -12,7 +12,7 @@ uv add "mcp[cli]"
 
 验证mcp依赖是否安装成功，执行如下命令
 ```bash
-uv run mcp_server
+uv run mcp
 ```
 
 当出现下图时代表安装成功
@@ -37,9 +37,9 @@ uv init mcp_server_chatppt
 将`chatppt.py`拷贝到该目录下，通过如下命令测试mcp server是否正常运行
 
 ```bash
-uv run --with mcp_server[cli] mcp_server run {YOUR_PATH}/mcp_server_chatppt/ppt.py
+uv run --with mcp[cli] mcp run {YOUR_PATH}/mcp_server_chatppt/ppt.py
 # 如果是mac，需要加转义符
-uv run --with mcp_server\[cli\] mcp_server run {YOUR_PATH}/mcp_server_chatppt/ppt.py
+uv run --with mcp\[cli\] mcp run {YOUR_PATH}/mcp_server_chatppt/ppt.py
 ```
 
 如果没有报错则MCP Server启动成功
@@ -60,15 +60,17 @@ uv run --with mcp_server\[cli\] mcp_server run {YOUR_PATH}/mcp_server_chatppt/pp
       "args": [
         "run",
         "--with",
-        "mcp_server[cli]",
-        "mcp_server",
+        "mcp[cli]",
+        "mcp",
         "run",
-        "{YOUR_PATH}/mcp_server_baidu_maps/ppt.py"
+        "{YOUR_PATH}/mcp_server/src/ppt.py"
       ],
       "env": {
-        "API_KEY": "<YOUR_API_KEY>"
+        "API_KEY": "<YOUR_YOO_API_KEY>"
       }
     }
   }
 }
 ```
+对应的API Key需要到[www.yoo-ai.com](https://www.yoo-ai.com)进行生成。
+参考教程为：[教程链接](https://j2md2qa3ym.feishu.cn/docx/LRDrdv6PyoF472xMr7DcJSAUnye?from=from_copylink)
