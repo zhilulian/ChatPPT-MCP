@@ -1,3 +1,4 @@
+# coding: utf-8
 """
 Chatppt MCP Server
 """
@@ -35,10 +36,8 @@ async def query_ppt(ppt_id: str = Field(description="PPT-ID")) -> str:
     Name:
         查询PPT生成进度
     Description:
-        根据PPT任务ID查询异步生成结果，status=1表示还在生成中，应该继续轮训该查询，status=2表示成功，status=3表示失败；process_url表示预览的url地址;
+        根据PPT任务ID查询异步生成结果，status=1表示还在生成中，应该继续轮训该查询，status=2表示成功，status=3表示失败；process_url表示预览的url地址，不断轮训请求直至成功或失败;
         当成功后使用默认浏览器打开ppt地址并下载PPT和生成编辑器地址；
-        每次显示新增的图片不与上次请求的显示重复;
-        每隔5秒轮训一次;
     Args:
         ppt_id: PPT-ID
     Returns:
@@ -47,10 +46,14 @@ async def query_ppt(ppt_id: str = Field(description="PPT-ID")) -> str:
 
     try:
         url = API_BASE + '/apps/ppt-result'
-        async with httpx.AsyncClient() as client:
-            response = await client.get(url, params={'id': ppt_id},
-                                        headers={'Authorization': 'Bearer ' + API_KEY})
-            return response.json()
+        response = httpx.get(url,
+                             params={'id': ppt_id},
+                             headers={'Authorization': 'Bearer ' + API_KEY})
+
+        if response.status_code != 200:
+            raise Exception(f"API请求失败: HTTP {response.status_code}")
+
+        return response.json()
     except httpx.HTTPError as e:
         raise Exception(f"HTTP request failed: {str(e)}") from e
 

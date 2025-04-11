@@ -1,5 +1,5 @@
 # __init__.py
-from src.chatppt.ppt import mcp
+from ppt import mcp
 
 
 def main():

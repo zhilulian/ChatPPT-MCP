@@ -1,3 +1,3 @@
-from src.chatppt.ppt import mcp
+from ppt import mcp
 
 mcp.run()
