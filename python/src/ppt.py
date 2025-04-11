@@ -46,9 +46,12 @@ async def query_ppt(ppt_id: str = Field(description="PPT-ID")) -> str:
 
     try:
         url = API_BASE + '/apps/ppt-result'
-        response = httpx.get(url,
-                             params={'id': ppt_id},
-                             headers={'Authorization': 'Bearer ' + API_KEY})
+        response = httpx.get(
+            url,
+            params={'id': ppt_id},
+            headers={'Authorization': 'Bearer ' + API_KEY},
+            timeout=30
+        )
 
         if response.status_code != 200:
             raise Exception(f"API请求失败: HTTP {response.status_code}")
@@ -76,9 +79,12 @@ async def build_ppt(
     try:
         api_key = check_api_key()
         url = API_BASE + '/apps/ppt-create'
-        response = httpx.post(url,
-                              data={'text': text},
-                              headers={'Authorization': f'Bearer {api_key}'})
+        response = httpx.post(
+            url,
+            data={'text': text},
+            headers={'Authorization': f'Bearer {api_key}'},
+            timeout=30
+        )
 
         if response.status_code != 200:
             raise Exception(f"API请求失败: HTTP {response.status_code}")
@@ -107,7 +113,7 @@ async def replace_template_ppt(ppt_id: str = Field(description="PPT-ID")) -> str
 
     try:
         url = API_BASE + '/apps/ppt-create-task'
-        response = httpx.post(url, data={'id': ppt_id}, headers={'Authorization': 'Bearer ' + API_KEY})
+        response = httpx.post(url, data={'id': ppt_id}, headers={'Authorization': 'Bearer ' + API_KEY}, timeout=60)
         return response.json()
     except httpx.HTTPError as e:
         raise Exception(f"HTTP request failed: {str(e)}") from e
@@ -130,7 +136,7 @@ async def download_ppt(
 
     try:
         url = API_BASE + '/apps/ppt-download'
-        response = httpx.get(url, params={'id': ppt_id}, headers={'Authorization': 'Bearer ' + API_KEY})
+        response = httpx.get(url, params={'id': ppt_id}, headers={'Authorization': 'Bearer ' + API_KEY}, timeout=60)
         return response.json()
     except httpx.HTTPError as e:
         raise Exception(f"HTTP request failed: {str(e)}") from e
@@ -153,7 +159,7 @@ async def editor_ppt(
 
     try:
         url = API_BASE + '/apps/ppt-editor'
-        response = httpx.post(url, data={'id': ppt_id}, headers={'Authorization': 'Bearer ' + API_KEY})
+        response = httpx.post(url, data={'id': ppt_id}, headers={'Authorization': 'Bearer ' + API_KEY}, timeout=60)
         return response.json()
     except httpx.HTTPError as e:
         raise Exception(f"HTTP request failed: {str(e)}") from e
