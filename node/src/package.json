@@ -1,0 +1,31 @@
+{
+  "name": "@chatppt/mcp-server-chatppt",
+  "version": "1.0.0",
+  "description": "MCP server for using the Chatppt API ",
+  "license": "MIT",
+  "author": "",
+  "homepage": "",
+  "bugs": "",
+  "type": "module",
+  "bin": {
+    "mcp-server-chatppt": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && shx chmod +x dist/*.js",
+    "prepare": "npm run build",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.0.1",
+    "@types/node-fetch": "^2.6.12",
+    "dotenv": "^16.5.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "shx": "^0.3.4",
+    "typescript": "^5.6.2"
+  }
+}
