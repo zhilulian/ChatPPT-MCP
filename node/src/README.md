@@ -16,14 +16,14 @@ Add the following to your `claude_desktop_config.json`:
 ```json
 {
   "mcpServers": {
-    "baidu-map": {
+    "chatppt": {
       "command": "npx",
       "args": [
         "-y",
         "@chatppt/mcp-server-chatppt"
       ],
       "env": {
-        "BAIDU_MAP_API_KEY": "<YOUR_API_KEY>"
+        "API_KEY": "<YOUR_API_KEY>"
       }
     }
   }
