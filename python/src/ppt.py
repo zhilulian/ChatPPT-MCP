@@ -109,7 +109,7 @@ async def build_ppt(
 async def replace_template_ppt(ppt_id: str = Field(description="PPT-ID")) -> str:
     """
     Name:
-        替换模板
+        替换模板。参照给出的任务PPT-ID随机更换用户的ppt模板。
     Description:
         根据PPT-ID执行替换模板
     Args:
@@ -144,9 +144,9 @@ async def download_ppt(
 ) -> str:
     """
     Name:
-        当PPT生成完成后，下载PPT。
+        当PPT生成完成后，生成下载PPT的地址，方便用户下载到本地。
     Description:
-        生成 PPT 下载地址
+        获取完整生成PPT文件的下载地址，仅当PPT生成完成后，才生成此下载地址。
     Args:
         ppt_id: PPT-ID
     Returns:
@@ -179,7 +179,7 @@ async def editor_ppt(
 ) -> str:
     """
     Name:
-        生成PPT编辑器界面URL
+         基于生成后的文件，打开并展示pptx文件，方便进行在线编辑与浏览查看。
     Description:
         通过PPT-ID生成PPT编辑器界面URL
     Args:
