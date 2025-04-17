@@ -125,7 +125,7 @@ const EDITOR_PPT_TOOL: Tool = {
 
 // 生成ppt
 async function handlePptBuild(text: string) {
-    const url = new URL(API_URL + "/msp/ppt/ppt-create");
+    const url = new URL(API_URL + "/mcp/ppt/ppt-create");
     let params = JSON.stringify({
         "text": text,
     })
@@ -162,7 +162,7 @@ async function handlePptBuild(text: string) {
 
 // 查询ppt
 async function handleQuery(ppt_id: string) {
-    const url = new URL(API_URL + "/msp/ppt/ppt-result");
+    const url = new URL(API_URL + "/mcp/ppt/ppt-result");
     url.searchParams.append("id", ppt_id);
 
     const response = await fetch(url.toString(), {
@@ -204,7 +204,7 @@ async function handleQuery(ppt_id: string) {
 
 // 下载ppt
 async function handleDownloadPpt(id: string) {
-    const url = new URL(API_URL + "/msp/ppt/ppt-download");
+    const url = new URL(API_URL + "/mcp/ppt/ppt-download");
     url.searchParams.append("id", id);
 
     const response = await fetch(url.toString(), {
@@ -239,7 +239,7 @@ async function handleDownloadPpt(id: string) {
 
 // 编辑器ppt
 async function handleEditorPpt(id: string) {
-    const url = new URL(API_URL + "/msp/ppt/ppt-editor");
+    const url = new URL(API_URL + "/mcp/ppt/ppt-editor");
     let params = JSON.stringify({
         "id": id,
     })

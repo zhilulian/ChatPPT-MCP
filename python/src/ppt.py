@@ -45,7 +45,7 @@ async def query_ppt(ppt_id: str = Field(description="PPT-ID")) -> str:
     """
 
     try:
-        url = API_BASE + '/msp/ppt/ppt-result'
+        url = API_BASE + '/mcp/ppt/ppt-result'
 
         async with httpx.AsyncClient() as client:
             response = await client.get(
@@ -82,7 +82,7 @@ async def build_ppt(
     """
 
     try:
-        url = API_BASE + '/msp/ppt/ppt-create'
+        url = API_BASE + '/mcp/ppt/ppt-create'
 
         async with httpx.AsyncClient() as client:
             response = await client.post(
@@ -119,7 +119,7 @@ async def replace_template_ppt(ppt_id: str = Field(description="PPT-ID")) -> str
     """
 
     try:
-        url = API_BASE + '/msp/ppt/ppt-create-task'
+        url = API_BASE + '/mcp/ppt/ppt-create-task'
 
         async with httpx.AsyncClient() as client:
             response = await client.post(
@@ -154,7 +154,7 @@ async def download_ppt(
     """
 
     try:
-        url = API_BASE + '/msp/ppt/ppt-download'
+        url = API_BASE + '/mcp/ppt/ppt-download'
 
         async with httpx.AsyncClient() as client:
             response = await client.get(
@@ -189,7 +189,7 @@ async def editor_ppt(
     """
 
     try:
-        url = API_BASE + '/msp/ppt/ppt-editor'
+        url = API_BASE + '/mcp/ppt/ppt-editor'
 
         async with httpx.AsyncClient() as client:
             response = await client.post(
