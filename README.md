@@ -25,7 +25,7 @@ BIYOO Tech MCP Server​​ now supports ​​18 intelligent document processin
 - and other document processing scenarios.
 Users can leverage the server to ​​build their own document creation tools​​, unlocking more possibilities for intelligent document generation.
 
-For any additional usage inquiries or requirements, please feel free to contact us at [http://www.yoo-ai.com](http://www.yoo-ai.com])
+For any additional usage inquiries or requirements, please feel free to contact us at [https://www.yoo-ai.com](https://www.yoo-ai.com?chanel=github])
 
 
 
