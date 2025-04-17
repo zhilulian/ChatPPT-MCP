@@ -37,7 +37,7 @@ async def query_ppt(ppt_id: str = Field(description="PPT-ID")) -> str:
         查询PPT生成进度
     Description:
         根据PPT任务ID查询异步生成结果，status=1表示还在生成中，应该继续轮训该查询，status=2表示成功，status=3表示失败；process_url表示预览的url地址，不断轮训请求直至成功或失败;
-        当成功后使用默认浏览器打开ppt地址并下载PPT和生成编辑器地址；
+        当成功后使用默认浏览器打开ppt地址并调用download_ppt工具下载PPT和工具editor_ppt生成编辑器地址；
     Args:
         ppt_id: PPT-ID
     Returns:
@@ -74,7 +74,7 @@ async def build_ppt(
     Name:
         PPT生成。当用户需要生成PPT时，调用此工具
     Description:
-        根据描述的文本或markdown，执行生成任务。当返回PPT-ID时，表示生成任务成功，可以调用query_ppt工具查询生成进度
+        根据描述的文本或markdown，执行生成任务。当返回PPT-ID时，表示生成任务成功，可以调用query_ppt工具查询生成进度和预览URL
     Args:
         text: 输入描述的文本或markdown，生成PPT
     Returns:
