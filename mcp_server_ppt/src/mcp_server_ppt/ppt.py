@@ -2,31 +2,35 @@
 """
 Chatppt MCP Server
 """
+import argparse
+import logging
 import os
+import traceback
 
 import httpx
 from mcp.server.fastmcp import FastMCP
 from pydantic import Field
 
 # 创建MCP服务器实例
-mcp = FastMCP("Chatppt Server", log_level="ERROR", port=int(os.getenv("PORT", "8000")))
+mcp = FastMCP("Chatppt Server", log_level="INFO", port=int(os.getenv("PORT", "8000")))
 # Chatppt API Base URL
 API_BASE = "https://saas.api.yoo-ai.com"
 # 用户API Key
-API_KEY = os.getenv('API_KEY')
+API_PPT_KEY = os.getenv('API_PPT_KEY')
+logger = logging.getLogger(__name__)
 
 
 def check_api_key():
-    """检查 API_KEY 是否已设置"""
-    if not API_KEY:
-        raise ValueError("API_KEY 环境变量未设置")
-    return API_KEY
+    """检查 API_PPT_KEY 是否已设置"""
+    if not API_PPT_KEY:
+        raise ValueError("API_PPT_KEY 环境变量未设置")
+    return API_PPT_KEY
 
 
 @mcp.tool()
 async def check():
     """查询用户当前配置token"""
-    return os.getenv('API_KEY')
+    return os.getenv('API_PPT_KEY')
 
 
 # 注册工具的装饰器，可以很方便的把一个函数注册为工具
@@ -51,7 +55,7 @@ async def query_ppt(ppt_id: str = Field(description="PPT-ID")) -> str:
             response = await client.get(
                 url,
                 params={'id': ppt_id},
-                headers={'Authorization': 'Bearer ' + API_KEY},
+                headers={'Authorization': 'Bearer ' + API_PPT_KEY},
                 timeout=30
             )
             response.raise_for_status()
@@ -88,7 +92,7 @@ async def build_ppt(
             response = await client.post(
                 url,
                 data={'text': text},
-                headers={'Authorization': 'Bearer ' + API_KEY},
+                headers={'Authorization': 'Bearer ' + API_PPT_KEY},
                 timeout=30
             )
             response.raise_for_status()
@@ -102,6 +106,7 @@ async def build_ppt(
     except ValueError as e:
         raise Exception(str(e)) from e
     except Exception as e:
+        logger.info(traceback.print_exc())
         raise Exception(f"PPT生成失败: {str(e)}") from e
 
 
@@ -125,7 +130,7 @@ async def replace_template_ppt(ppt_id: str = Field(description="PPT-ID")) -> str
             response = await client.post(
                 url,
                 data={'id': ppt_id},
-                headers={'Authorization': 'Bearer ' + API_KEY},
+                headers={'Authorization': 'Bearer ' + API_PPT_KEY},
                 timeout=60
             )
             response.raise_for_status()
@@ -160,7 +165,7 @@ async def download_ppt(
             response = await client.get(
                 url,
                 params={'id': ppt_id},
-                headers={'Authorization': 'Bearer ' + API_KEY},
+                headers={'Authorization': 'Bearer ' + API_PPT_KEY},
                 timeout=60
             )
             response.raise_for_status()
@@ -195,7 +200,7 @@ async def editor_ppt(
             response = await client.post(
                 url,
                 data={'id': ppt_id},
-                headers={'Authorization': 'Bearer ' + API_KEY},
+                headers={'Authorization': 'Bearer ' + API_PPT_KEY},
                 timeout=60
             )
             response.raise_for_status()
@@ -206,3 +211,23 @@ async def editor_ppt(
         return response.json()
     except httpx.HTTPError as e:
         raise Exception(f"HTTP request failed: {str(e)}") from e
+
+def main():
+    """MCP Chatppt Server - HTTP call Chatppt API for MCP"""
+    parser = argparse.ArgumentParser(description="Run the veFaaS browser use MCP Server")
+    parser.add_argument(
+        "--transport",
+        "-t",
+        choices=["sse", "stdio"],
+        default="stdio",
+        help="Transport protocol to use (sse or stdio)",
+    )
+    args = parser.parse_args()
+
+    logger.info(f"start {args.transport} server")
+    mcp.run(transport=args.transport)
+
+
+if __name__ == "__main__":
+    main()
+
